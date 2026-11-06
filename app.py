@@ -28,7 +28,7 @@ for i, op in enumerate(operadores):
             if op == "NOT":
                 st.session_state.expr += " NOT "
             elif op in ["(", ")"]:
-                st.session_state.expr += op
+                st.session_state.expr += f"{op}"
             else:
                 st.session_state.expr += f" {op} "
 
