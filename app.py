@@ -107,27 +107,27 @@ class AnalizadorLogico:
 
     def disyuncion(self):
         izquierda = self.xor()
-        while self.aceptar("OR"):
+        while self.aceptar("∨"):
             derecha = self.xor()
             izquierda = izquierda or derecha
         return izquierda
 
     def xor(self):
         izquierda = self.conjuncion()
-        while self.aceptar("XOR"):
+        while self.aceptar("⊕"):
             derecha = self.conjuncion()
             izquierda = (izquierda != derecha)
         return izquierda
 
     def conjuncion(self):
         izquierda = self.unario()
-        while self.aceptar("AND"):
+        while self.aceptar("∧"):
             derecha = self.unario()
             izquierda = izquierda and derecha
         return izquierda
 
     def unario(self):
-        if self.aceptar("NOT"):
+        if self.aceptar("¬"):
             return not self.unario()
 
         if self.aceptar("("):
