@@ -8,7 +8,7 @@ st.title("🧮 Calculadora de Tabla de la Verdad")
 st.markdown("Construye tu expresión haciendo clic. El resultado se mostrará exclusivamente en 0 y 1.")
 
 # Las variables coinciden con los botones del constructor.
-VARIABLES = ["P", "Q", "R", "S", "T", "U"]
+VARIABLES = ["P", "B", "C", "D", "E", "F"]
 
 if "expr" not in st.session_state:
     st.session_state.expr = ""
@@ -22,7 +22,7 @@ for i, variable in enumerate(VARIABLES):
 
 st.markdown("---")
 st.subheader("＋ Operadores")
-operadores = ["∧", "∨", "¬", "⊕", "->", "<->", "(", ")"]
+operadores = ["AND", "OR", "NOT", "XOR", "->", "<->", "(", ")"]
 cols = st.columns(4)
 
 for i, op in enumerate(operadores):
@@ -107,27 +107,27 @@ class AnalizadorLogico:
 
     def disyuncion(self):
         izquierda = self.xor()
-        while self.aceptar("∨"):
+        while self.aceptar("OR"):
             derecha = self.xor()
             izquierda = izquierda or derecha
         return izquierda
 
     def xor(self):
         izquierda = self.conjuncion()
-        while self.aceptar("⊕"):
+        while self.aceptar("XOR"):
             derecha = self.conjuncion()
             izquierda = (izquierda != derecha)
         return izquierda
 
     def conjuncion(self):
         izquierda = self.unario()
-        while self.aceptar("∧"):
+        while self.aceptar("AND"):
             derecha = self.unario()
             izquierda = izquierda and derecha
         return izquierda
 
     def unario(self):
-        if self.aceptar("¬"):
+        if self.aceptar("NOT"):
             return not self.unario()
 
         if self.aceptar("("):
