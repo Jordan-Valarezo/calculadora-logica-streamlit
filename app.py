@@ -11,7 +11,7 @@ if "expr" not in st.session_state:
     st.session_state.expr = ""
 
 st.subheader("🧩 Constructor de Expresión")
-variables = ["A", "B", "C", "D", "E", "F"]
+variables = ["P", "B", "C", "D", "E", "F"]
 cols = st.columns(6)
 for i, v in enumerate(variables):
     with cols[i % 6]:
@@ -26,7 +26,7 @@ for i, op in enumerate(operadores):
     with cols[i % 4]:
         if st.button(op, key=f"btn_{op}", use_container_width=True):
             if op == "NOT":
-                st.session_state.expr += " NOT "
+                st.session_state.expr += " NOT " 
             elif op in ["(", ")"]:
                 st.session_state.expr += f"{op}"
             else:
