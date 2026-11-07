@@ -8,7 +8,7 @@ st.title("🧮 Calculadora de Tabla de la Verdad")
 st.markdown("Construye tu expresión haciendo clic. El resultado se mostrará exclusivamente en 0 y 1.")
 
 # Las variables coinciden con los botones del constructor.
-VARIABLES = ["P", "B", "C", "D", "E", "F"]
+VARIABLES = ["P", "Q", "R", "S", "T", "U"]
 
 if "expr" not in st.session_state:
     st.session_state.expr = ""
@@ -22,7 +22,7 @@ for i, variable in enumerate(VARIABLES):
 
 st.markdown("---")
 st.subheader("＋ Operadores")
-operadores = ["AND", "OR", "NOT", "XOR", "->", "<->", "(", ")"]
+operadores = ["∧", "∨", "¬", "⊕", "->", "<->", "(", ")"]
 cols = st.columns(4)
 
 for i, op in enumerate(operadores):
